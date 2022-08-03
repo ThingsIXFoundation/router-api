@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.21.4
-// source: router/router-api.proto
+// source: router/router.proto
 
 package router
 
@@ -206,5 +206,5 @@ var RouterV1_ServiceDesc = grpc.ServiceDesc{
 			ClientStreams: true,
 		},
 	},
-	Metadata: "router/router-api.proto",
+	Metadata: "router/router.proto",
 }
