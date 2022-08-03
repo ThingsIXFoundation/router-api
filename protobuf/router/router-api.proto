@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package router;
+
+option go_package = "github.com/ThingsIXFoundation/router-api/go/router";
+
+import "gw/gw.proto";
+
+message Xor8Filter {
+    uint64 seed = 1;
+    uint32 blocklength = 2;
+    bytes fingerprints = 3;
+}
+
+message JoinFilter {
+    oneof filter {
+        Xor8Filter xor8 = 1;
+    }
+}
+
+message NetIdsRequest {
+
+}
+
+message NetIdsResponse {
+    repeated bytes netId = 1;
+}
+
+message JoinFilterRequest {
+
+}
+
+message JoinFilterResponse {
+    JoinFilter joinFilter = 1;
+}
+
+message GatewayInformation {
+    bytes publicKey = 1;
+    bytes owner = 2;
+}
+
+message AirtimeReceipt {
+    bytes owner = 1;
+    uint32 airtime = 2;
+}
+
+message UplinkFrameEvent {
+    gw.UplinkFrame uplinkFrame = 1;
+    AirtimeReceipt airtimeReceipt = 2;
+}
+
+message DownlinkTXAckEvent {
+    gw.DownlinkTXAck downlinkTXAck = 1;
+    AirtimeReceipt airtimeReceipt = 2;
+}
+
+message HotspotToRouterEvent {
+    GatewayInformation gatewayInformation = 1;
+    oneof event {
+        UplinkFrameEvent uplinkFrameEvent = 2;
+        DownlinkTXAckEvent downlinkTXAckEvent = 3;
+    }
+}
+
+message DownlinkFrameEvent {
+    gw.DownlinkFrame downlinkFrame = 2;
+}
+
+message AirtimePaymentEvent {
+
+}
+
+message RouterToHotspotEvent {
+    oneof event {
+        DownlinkFrameEvent downlinkFrameEvent = 1;
+        AirtimePaymentEvent airtimePaymentEvent = 2;
+    }
+}
+
+service RouterV1 {
+    rpc NetIds(NetIdsRequest) returns (NetIdsResponse);
+    rpc JoinFilter(JoinFilterRequest) returns (JoinFilterResponse);
+    rpc Events(stream HotspotToRouterEvent) returns (stream RouterToHotspotEvent);
+}

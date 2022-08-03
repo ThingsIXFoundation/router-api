@@ -1,0 +1,3 @@
+[submodule "chirpstack-api"]
+	path = chirpstack-api
+	url = git@github.com:brocaar/chirpstack-api.git
