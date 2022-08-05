@@ -541,6 +541,53 @@ func (x *DownlinkTXAckEvent) GetAirtimeReceipt() *AirtimeReceipt {
 	return nil
 }
 
+type StatusEvent struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Online bool `protobuf:"varint,1,opt,name=online,proto3" json:"online,omitempty"`
+}
+
+func (x *StatusEvent) Reset() {
+	*x = StatusEvent{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_router_router_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *StatusEvent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StatusEvent) ProtoMessage() {}
+
+func (x *StatusEvent) ProtoReflect() protoreflect.Message {
+	mi := &file_router_router_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StatusEvent.ProtoReflect.Descriptor instead.
+func (*StatusEvent) Descriptor() ([]byte, []int) {
+	return file_router_router_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *StatusEvent) GetOnline() bool {
+	if x != nil {
+		return x.Online
+	}
+	return false
+}
+
 type HotspotToRouterEvent struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -551,13 +598,14 @@ type HotspotToRouterEvent struct {
 	//
 	//	*HotspotToRouterEvent_UplinkFrameEvent
 	//	*HotspotToRouterEvent_DownlinkTXAckEvent
+	//	*HotspotToRouterEvent_StatusEvent
 	Event isHotspotToRouterEvent_Event `protobuf_oneof:"event"`
 }
 
 func (x *HotspotToRouterEvent) Reset() {
 	*x = HotspotToRouterEvent{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_router_router_proto_msgTypes[10]
+		mi := &file_router_router_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -570,7 +618,7 @@ func (x *HotspotToRouterEvent) String() string {
 func (*HotspotToRouterEvent) ProtoMessage() {}
 
 func (x *HotspotToRouterEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_router_router_proto_msgTypes[10]
+	mi := &file_router_router_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -583,7 +631,7 @@ func (x *HotspotToRouterEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HotspotToRouterEvent.ProtoReflect.Descriptor instead.
 func (*HotspotToRouterEvent) Descriptor() ([]byte, []int) {
-	return file_router_router_proto_rawDescGZIP(), []int{10}
+	return file_router_router_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *HotspotToRouterEvent) GetGatewayInformation() *GatewayInformation {
@@ -614,6 +662,13 @@ func (x *HotspotToRouterEvent) GetDownlinkTXAckEvent() *DownlinkTXAckEvent {
 	return nil
 }
 
+func (x *HotspotToRouterEvent) GetStatusEvent() *StatusEvent {
+	if x, ok := x.GetEvent().(*HotspotToRouterEvent_StatusEvent); ok {
+		return x.StatusEvent
+	}
+	return nil
+}
+
 type isHotspotToRouterEvent_Event interface {
 	isHotspotToRouterEvent_Event()
 }
@@ -626,9 +681,15 @@ type HotspotToRouterEvent_DownlinkTXAckEvent struct {
 	DownlinkTXAckEvent *DownlinkTXAckEvent `protobuf:"bytes,3,opt,name=downlinkTXAckEvent,proto3,oneof"`
 }
 
+type HotspotToRouterEvent_StatusEvent struct {
+	StatusEvent *StatusEvent `protobuf:"bytes,4,opt,name=statusEvent,proto3,oneof"`
+}
+
 func (*HotspotToRouterEvent_UplinkFrameEvent) isHotspotToRouterEvent_Event() {}
 
 func (*HotspotToRouterEvent_DownlinkTXAckEvent) isHotspotToRouterEvent_Event() {}
+
+func (*HotspotToRouterEvent_StatusEvent) isHotspotToRouterEvent_Event() {}
 
 type DownlinkFrameEvent struct {
 	state         protoimpl.MessageState
@@ -641,7 +702,7 @@ type DownlinkFrameEvent struct {
 func (x *DownlinkFrameEvent) Reset() {
 	*x = DownlinkFrameEvent{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_router_router_proto_msgTypes[11]
+		mi := &file_router_router_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -654,7 +715,7 @@ func (x *DownlinkFrameEvent) String() string {
 func (*DownlinkFrameEvent) ProtoMessage() {}
 
 func (x *DownlinkFrameEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_router_router_proto_msgTypes[11]
+	mi := &file_router_router_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -667,7 +728,7 @@ func (x *DownlinkFrameEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DownlinkFrameEvent.ProtoReflect.Descriptor instead.
 func (*DownlinkFrameEvent) Descriptor() ([]byte, []int) {
-	return file_router_router_proto_rawDescGZIP(), []int{11}
+	return file_router_router_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *DownlinkFrameEvent) GetDownlinkFrame() *gw.DownlinkFrame {
@@ -686,7 +747,7 @@ type AirtimePaymentEvent struct {
 func (x *AirtimePaymentEvent) Reset() {
 	*x = AirtimePaymentEvent{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_router_router_proto_msgTypes[12]
+		mi := &file_router_router_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -699,7 +760,7 @@ func (x *AirtimePaymentEvent) String() string {
 func (*AirtimePaymentEvent) ProtoMessage() {}
 
 func (x *AirtimePaymentEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_router_router_proto_msgTypes[12]
+	mi := &file_router_router_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -712,7 +773,7 @@ func (x *AirtimePaymentEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AirtimePaymentEvent.ProtoReflect.Descriptor instead.
 func (*AirtimePaymentEvent) Descriptor() ([]byte, []int) {
-	return file_router_router_proto_rawDescGZIP(), []int{12}
+	return file_router_router_proto_rawDescGZIP(), []int{13}
 }
 
 type RouterToHotspotEvent struct {
@@ -730,7 +791,7 @@ type RouterToHotspotEvent struct {
 func (x *RouterToHotspotEvent) Reset() {
 	*x = RouterToHotspotEvent{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_router_router_proto_msgTypes[13]
+		mi := &file_router_router_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -743,7 +804,7 @@ func (x *RouterToHotspotEvent) String() string {
 func (*RouterToHotspotEvent) ProtoMessage() {}
 
 func (x *RouterToHotspotEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_router_router_proto_msgTypes[13]
+	mi := &file_router_router_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -756,7 +817,7 @@ func (x *RouterToHotspotEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RouterToHotspotEvent.ProtoReflect.Descriptor instead.
 func (*RouterToHotspotEvent) Descriptor() ([]byte, []int) {
-	return file_router_router_proto_rawDescGZIP(), []int{13}
+	return file_router_router_proto_rawDescGZIP(), []int{14}
 }
 
 func (m *RouterToHotspotEvent) GetEvent() isRouterToHotspotEvent_Event {
@@ -848,22 +909,28 @@ var file_router_router_proto_rawDesc = []byte{
 	0x70, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x72, 0x6f, 0x75, 0x74, 0x65,
 	0x72, 0x2e, 0x41, 0x69, 0x72, 0x74, 0x69, 0x6d, 0x65, 0x52, 0x65, 0x63, 0x65, 0x69, 0x70, 0x74,
 	0x52, 0x0e, 0x61, 0x69, 0x72, 0x74, 0x69, 0x6d, 0x65, 0x52, 0x65, 0x63, 0x65, 0x69, 0x70, 0x74,
-	0x22, 0x81, 0x02, 0x0a, 0x14, 0x48, 0x6f, 0x74, 0x73, 0x70, 0x6f, 0x74, 0x54, 0x6f, 0x52, 0x6f,
-	0x75, 0x74, 0x65, 0x72, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x12, 0x4a, 0x0a, 0x12, 0x67, 0x61, 0x74,
-	0x65, 0x77, 0x61, 0x79, 0x49, 0x6e, 0x66, 0x6f, 0x72, 0x6d, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x72, 0x6f, 0x75, 0x74, 0x65, 0x72, 0x2e, 0x47,
-	0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x49, 0x6e, 0x66, 0x6f, 0x72, 0x6d, 0x61, 0x74, 0x69, 0x6f,
-	0x6e, 0x52, 0x12, 0x67, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x49, 0x6e, 0x66, 0x6f, 0x72, 0x6d,
-	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x46, 0x0a, 0x10, 0x75, 0x70, 0x6c, 0x69, 0x6e, 0x6b, 0x46,
-	0x72, 0x61, 0x6d, 0x65, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32,
-	0x18, 0x2e, 0x72, 0x6f, 0x75, 0x74, 0x65, 0x72, 0x2e, 0x55, 0x70, 0x6c, 0x69, 0x6e, 0x6b, 0x46,
-	0x72, 0x61, 0x6d, 0x65, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x48, 0x00, 0x52, 0x10, 0x75, 0x70, 0x6c,
-	0x69, 0x6e, 0x6b, 0x46, 0x72, 0x61, 0x6d, 0x65, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x12, 0x4c, 0x0a,
-	0x12, 0x64, 0x6f, 0x77, 0x6e, 0x6c, 0x69, 0x6e, 0x6b, 0x54, 0x58, 0x41, 0x63, 0x6b, 0x45, 0x76,
-	0x65, 0x6e, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x72, 0x6f, 0x75, 0x74,
-	0x65, 0x72, 0x2e, 0x44, 0x6f, 0x77, 0x6e, 0x6c, 0x69, 0x6e, 0x6b, 0x54, 0x58, 0x41, 0x63, 0x6b,
-	0x45, 0x76, 0x65, 0x6e, 0x74, 0x48, 0x00, 0x52, 0x12, 0x64, 0x6f, 0x77, 0x6e, 0x6c, 0x69, 0x6e,
-	0x6b, 0x54, 0x58, 0x41, 0x63, 0x6b, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x42, 0x07, 0x0a, 0x05, 0x65,
+	0x22, 0x25, 0x0a, 0x0b, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x12,
+	0x16, 0x0a, 0x06, 0x6f, 0x6e, 0x6c, 0x69, 0x6e, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52,
+	0x06, 0x6f, 0x6e, 0x6c, 0x69, 0x6e, 0x65, 0x22, 0xba, 0x02, 0x0a, 0x14, 0x48, 0x6f, 0x74, 0x73,
+	0x70, 0x6f, 0x74, 0x54, 0x6f, 0x52, 0x6f, 0x75, 0x74, 0x65, 0x72, 0x45, 0x76, 0x65, 0x6e, 0x74,
+	0x12, 0x4a, 0x0a, 0x12, 0x67, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x49, 0x6e, 0x66, 0x6f, 0x72,
+	0x6d, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x72,
+	0x6f, 0x75, 0x74, 0x65, 0x72, 0x2e, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x49, 0x6e, 0x66,
+	0x6f, 0x72, 0x6d, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x12, 0x67, 0x61, 0x74, 0x65, 0x77, 0x61,
+	0x79, 0x49, 0x6e, 0x66, 0x6f, 0x72, 0x6d, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x46, 0x0a, 0x10,
+	0x75, 0x70, 0x6c, 0x69, 0x6e, 0x6b, 0x46, 0x72, 0x61, 0x6d, 0x65, 0x45, 0x76, 0x65, 0x6e, 0x74,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x72, 0x6f, 0x75, 0x74, 0x65, 0x72, 0x2e,
+	0x55, 0x70, 0x6c, 0x69, 0x6e, 0x6b, 0x46, 0x72, 0x61, 0x6d, 0x65, 0x45, 0x76, 0x65, 0x6e, 0x74,
+	0x48, 0x00, 0x52, 0x10, 0x75, 0x70, 0x6c, 0x69, 0x6e, 0x6b, 0x46, 0x72, 0x61, 0x6d, 0x65, 0x45,
+	0x76, 0x65, 0x6e, 0x74, 0x12, 0x4c, 0x0a, 0x12, 0x64, 0x6f, 0x77, 0x6e, 0x6c, 0x69, 0x6e, 0x6b,
+	0x54, 0x58, 0x41, 0x63, 0x6b, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x1a, 0x2e, 0x72, 0x6f, 0x75, 0x74, 0x65, 0x72, 0x2e, 0x44, 0x6f, 0x77, 0x6e, 0x6c, 0x69,
+	0x6e, 0x6b, 0x54, 0x58, 0x41, 0x63, 0x6b, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x48, 0x00, 0x52, 0x12,
+	0x64, 0x6f, 0x77, 0x6e, 0x6c, 0x69, 0x6e, 0x6b, 0x54, 0x58, 0x41, 0x63, 0x6b, 0x45, 0x76, 0x65,
+	0x6e, 0x74, 0x12, 0x37, 0x0a, 0x0b, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x45, 0x76, 0x65, 0x6e,
+	0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x13, 0x2e, 0x72, 0x6f, 0x75, 0x74, 0x65, 0x72,
+	0x2e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x48, 0x00, 0x52, 0x0b,
+	0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x42, 0x07, 0x0a, 0x05, 0x65,
 	0x76, 0x65, 0x6e, 0x74, 0x22, 0x4d, 0x0a, 0x12, 0x44, 0x6f, 0x77, 0x6e, 0x6c, 0x69, 0x6e, 0x6b,
 	0x46, 0x72, 0x61, 0x6d, 0x65, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x12, 0x37, 0x0a, 0x0d, 0x64, 0x6f,
 	0x77, 0x6e, 0x6c, 0x69, 0x6e, 0x6b, 0x46, 0x72, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
@@ -914,7 +981,7 @@ func file_router_router_proto_rawDescGZIP() []byte {
 	return file_router_router_proto_rawDescData
 }
 
-var file_router_router_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
+var file_router_router_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_router_router_proto_goTypes = []interface{}{
 	(*Xor8Filter)(nil),           // 0: router.Xor8Filter
 	(*JoinFilter)(nil),           // 1: router.JoinFilter
@@ -926,38 +993,40 @@ var file_router_router_proto_goTypes = []interface{}{
 	(*AirtimeReceipt)(nil),       // 7: router.AirtimeReceipt
 	(*UplinkFrameEvent)(nil),     // 8: router.UplinkFrameEvent
 	(*DownlinkTXAckEvent)(nil),   // 9: router.DownlinkTXAckEvent
-	(*HotspotToRouterEvent)(nil), // 10: router.HotspotToRouterEvent
-	(*DownlinkFrameEvent)(nil),   // 11: router.DownlinkFrameEvent
-	(*AirtimePaymentEvent)(nil),  // 12: router.AirtimePaymentEvent
-	(*RouterToHotspotEvent)(nil), // 13: router.RouterToHotspotEvent
-	(*gw.UplinkFrame)(nil),       // 14: gw.UplinkFrame
-	(*gw.DownlinkTXAck)(nil),     // 15: gw.DownlinkTXAck
-	(*gw.DownlinkFrame)(nil),     // 16: gw.DownlinkFrame
+	(*StatusEvent)(nil),          // 10: router.StatusEvent
+	(*HotspotToRouterEvent)(nil), // 11: router.HotspotToRouterEvent
+	(*DownlinkFrameEvent)(nil),   // 12: router.DownlinkFrameEvent
+	(*AirtimePaymentEvent)(nil),  // 13: router.AirtimePaymentEvent
+	(*RouterToHotspotEvent)(nil), // 14: router.RouterToHotspotEvent
+	(*gw.UplinkFrame)(nil),       // 15: gw.UplinkFrame
+	(*gw.DownlinkTXAck)(nil),     // 16: gw.DownlinkTXAck
+	(*gw.DownlinkFrame)(nil),     // 17: gw.DownlinkFrame
 }
 var file_router_router_proto_depIdxs = []int32{
 	0,  // 0: router.JoinFilter.xor8:type_name -> router.Xor8Filter
 	1,  // 1: router.JoinFilterResponse.joinFilter:type_name -> router.JoinFilter
-	14, // 2: router.UplinkFrameEvent.uplinkFrame:type_name -> gw.UplinkFrame
+	15, // 2: router.UplinkFrameEvent.uplinkFrame:type_name -> gw.UplinkFrame
 	7,  // 3: router.UplinkFrameEvent.airtimeReceipt:type_name -> router.AirtimeReceipt
-	15, // 4: router.DownlinkTXAckEvent.downlinkTXAck:type_name -> gw.DownlinkTXAck
+	16, // 4: router.DownlinkTXAckEvent.downlinkTXAck:type_name -> gw.DownlinkTXAck
 	7,  // 5: router.DownlinkTXAckEvent.airtimeReceipt:type_name -> router.AirtimeReceipt
 	6,  // 6: router.HotspotToRouterEvent.gatewayInformation:type_name -> router.GatewayInformation
 	8,  // 7: router.HotspotToRouterEvent.uplinkFrameEvent:type_name -> router.UplinkFrameEvent
 	9,  // 8: router.HotspotToRouterEvent.downlinkTXAckEvent:type_name -> router.DownlinkTXAckEvent
-	16, // 9: router.DownlinkFrameEvent.downlinkFrame:type_name -> gw.DownlinkFrame
-	11, // 10: router.RouterToHotspotEvent.downlinkFrameEvent:type_name -> router.DownlinkFrameEvent
-	12, // 11: router.RouterToHotspotEvent.airtimePaymentEvent:type_name -> router.AirtimePaymentEvent
-	2,  // 12: router.RouterV1.NetIds:input_type -> router.NetIdsRequest
-	4,  // 13: router.RouterV1.JoinFilter:input_type -> router.JoinFilterRequest
-	10, // 14: router.RouterV1.Events:input_type -> router.HotspotToRouterEvent
-	3,  // 15: router.RouterV1.NetIds:output_type -> router.NetIdsResponse
-	5,  // 16: router.RouterV1.JoinFilter:output_type -> router.JoinFilterResponse
-	13, // 17: router.RouterV1.Events:output_type -> router.RouterToHotspotEvent
-	15, // [15:18] is the sub-list for method output_type
-	12, // [12:15] is the sub-list for method input_type
-	12, // [12:12] is the sub-list for extension type_name
-	12, // [12:12] is the sub-list for extension extendee
-	0,  // [0:12] is the sub-list for field type_name
+	10, // 9: router.HotspotToRouterEvent.statusEvent:type_name -> router.StatusEvent
+	17, // 10: router.DownlinkFrameEvent.downlinkFrame:type_name -> gw.DownlinkFrame
+	12, // 11: router.RouterToHotspotEvent.downlinkFrameEvent:type_name -> router.DownlinkFrameEvent
+	13, // 12: router.RouterToHotspotEvent.airtimePaymentEvent:type_name -> router.AirtimePaymentEvent
+	2,  // 13: router.RouterV1.NetIds:input_type -> router.NetIdsRequest
+	4,  // 14: router.RouterV1.JoinFilter:input_type -> router.JoinFilterRequest
+	11, // 15: router.RouterV1.Events:input_type -> router.HotspotToRouterEvent
+	3,  // 16: router.RouterV1.NetIds:output_type -> router.NetIdsResponse
+	5,  // 17: router.RouterV1.JoinFilter:output_type -> router.JoinFilterResponse
+	14, // 18: router.RouterV1.Events:output_type -> router.RouterToHotspotEvent
+	16, // [16:19] is the sub-list for method output_type
+	13, // [13:16] is the sub-list for method input_type
+	13, // [13:13] is the sub-list for extension type_name
+	13, // [13:13] is the sub-list for extension extendee
+	0,  // [0:13] is the sub-list for field type_name
 }
 
 func init() { file_router_router_proto_init() }
@@ -1087,7 +1156,7 @@ func file_router_router_proto_init() {
 			}
 		}
 		file_router_router_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HotspotToRouterEvent); i {
+			switch v := v.(*StatusEvent); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1099,7 +1168,7 @@ func file_router_router_proto_init() {
 			}
 		}
 		file_router_router_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DownlinkFrameEvent); i {
+			switch v := v.(*HotspotToRouterEvent); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1111,7 +1180,7 @@ func file_router_router_proto_init() {
 			}
 		}
 		file_router_router_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AirtimePaymentEvent); i {
+			switch v := v.(*DownlinkFrameEvent); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1123,6 +1192,18 @@ func file_router_router_proto_init() {
 			}
 		}
 		file_router_router_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*AirtimePaymentEvent); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_router_router_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RouterToHotspotEvent); i {
 			case 0:
 				return &v.state
@@ -1138,11 +1219,12 @@ func file_router_router_proto_init() {
 	file_router_router_proto_msgTypes[1].OneofWrappers = []interface{}{
 		(*JoinFilter_Xor8)(nil),
 	}
-	file_router_router_proto_msgTypes[10].OneofWrappers = []interface{}{
+	file_router_router_proto_msgTypes[11].OneofWrappers = []interface{}{
 		(*HotspotToRouterEvent_UplinkFrameEvent)(nil),
 		(*HotspotToRouterEvent_DownlinkTXAckEvent)(nil),
+		(*HotspotToRouterEvent_StatusEvent)(nil),
 	}
-	file_router_router_proto_msgTypes[13].OneofWrappers = []interface{}{
+	file_router_router_proto_msgTypes[14].OneofWrappers = []interface{}{
 		(*RouterToHotspotEvent_DownlinkFrameEvent)(nil),
 		(*RouterToHotspotEvent_AirtimePaymentEvent)(nil),
 	}
@@ -1152,7 +1234,7 @@ func file_router_router_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_router_router_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   14,
+			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

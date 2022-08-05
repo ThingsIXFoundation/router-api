@@ -54,11 +54,16 @@ message DownlinkTXAckEvent {
     AirtimeReceipt airtimeReceipt = 2;
 }
 
+message StatusEvent {
+    bool online = 1;
+}
+
 message HotspotToRouterEvent {
     GatewayInformation gatewayInformation = 1;
     oneof event {
         UplinkFrameEvent uplinkFrameEvent = 2;
         DownlinkTXAckEvent downlinkTXAckEvent = 3;
+        StatusEvent statusEvent = 4;
     }
 }
 
