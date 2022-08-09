@@ -35,8 +35,9 @@ message JoinFilterResponse {
 }
 
 message GatewayInformation {
-    bytes publicKey = 1;
-    bytes owner = 2;
+    bytes id = 1;
+    bytes publicKey = 2;
+    bytes owner = 3;
 }
 
 message AirtimeReceipt {
