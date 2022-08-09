@@ -37,11 +37,11 @@ message JoinFilterResponse {
 message GatewayInformation {
     bytes id = 1;
     bytes publicKey = 2;
-    bytes owner = 3;
+    string owner = 3;
 }
 
 message AirtimeReceipt {
-    bytes owner = 1;
+    string owner = 1;
     uint32 airtime = 2;
 }
 
