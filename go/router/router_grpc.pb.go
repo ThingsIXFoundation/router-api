@@ -63,8 +63,8 @@ func (c *routerV1Client) Events(ctx context.Context, opts ...grpc.CallOption) (R
 }
 
 type RouterV1_EventsClient interface {
-	Send(*HotspotToRouterEvent) error
-	Recv() (*RouterToHotspotEvent, error)
+	Send(*GatewayToRouterEvent) error
+	Recv() (*RouterToGatewayEvent, error)
 	grpc.ClientStream
 }
 
@@ -72,12 +72,12 @@ type routerV1EventsClient struct {
 	grpc.ClientStream
 }
 
-func (x *routerV1EventsClient) Send(m *HotspotToRouterEvent) error {
+func (x *routerV1EventsClient) Send(m *GatewayToRouterEvent) error {
 	return x.ClientStream.SendMsg(m)
 }
 
-func (x *routerV1EventsClient) Recv() (*RouterToHotspotEvent, error) {
-	m := new(RouterToHotspotEvent)
+func (x *routerV1EventsClient) Recv() (*RouterToGatewayEvent, error) {
+	m := new(RouterToGatewayEvent)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -161,8 +161,8 @@ func _RouterV1_Events_Handler(srv interface{}, stream grpc.ServerStream) error {
 }
 
 type RouterV1_EventsServer interface {
-	Send(*RouterToHotspotEvent) error
-	Recv() (*HotspotToRouterEvent, error)
+	Send(*RouterToGatewayEvent) error
+	Recv() (*GatewayToRouterEvent, error)
 	grpc.ServerStream
 }
 
@@ -170,12 +170,12 @@ type routerV1EventsServer struct {
 	grpc.ServerStream
 }
 
-func (x *routerV1EventsServer) Send(m *RouterToHotspotEvent) error {
+func (x *routerV1EventsServer) Send(m *RouterToGatewayEvent) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *routerV1EventsServer) Recv() (*HotspotToRouterEvent, error) {
-	m := new(HotspotToRouterEvent)
+func (x *routerV1EventsServer) Recv() (*GatewayToRouterEvent, error) {
+	m := new(GatewayToRouterEvent)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
 	}

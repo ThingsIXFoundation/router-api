@@ -596,7 +596,7 @@ func (x *StatusEvent) GetOnline() bool {
 	return false
 }
 
-type HotspotToRouterEvent struct {
+type GatewayToRouterEvent struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -604,14 +604,14 @@ type HotspotToRouterEvent struct {
 	GatewayInformation *GatewayInformation `protobuf:"bytes,1,opt,name=gatewayInformation,proto3" json:"gatewayInformation,omitempty"`
 	// Types that are assignable to Event:
 	//
-	//	*HotspotToRouterEvent_UplinkFrameEvent
-	//	*HotspotToRouterEvent_DownlinkTXAckEvent
-	//	*HotspotToRouterEvent_StatusEvent
-	Event isHotspotToRouterEvent_Event `protobuf_oneof:"event"`
+	//	*GatewayToRouterEvent_UplinkFrameEvent
+	//	*GatewayToRouterEvent_DownlinkTXAckEvent
+	//	*GatewayToRouterEvent_StatusEvent
+	Event isGatewayToRouterEvent_Event `protobuf_oneof:"event"`
 }
 
-func (x *HotspotToRouterEvent) Reset() {
-	*x = HotspotToRouterEvent{}
+func (x *GatewayToRouterEvent) Reset() {
+	*x = GatewayToRouterEvent{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_router_router_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -619,13 +619,13 @@ func (x *HotspotToRouterEvent) Reset() {
 	}
 }
 
-func (x *HotspotToRouterEvent) String() string {
+func (x *GatewayToRouterEvent) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*HotspotToRouterEvent) ProtoMessage() {}
+func (*GatewayToRouterEvent) ProtoMessage() {}
 
-func (x *HotspotToRouterEvent) ProtoReflect() protoreflect.Message {
+func (x *GatewayToRouterEvent) ProtoReflect() protoreflect.Message {
 	mi := &file_router_router_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -637,67 +637,67 @@ func (x *HotspotToRouterEvent) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use HotspotToRouterEvent.ProtoReflect.Descriptor instead.
-func (*HotspotToRouterEvent) Descriptor() ([]byte, []int) {
+// Deprecated: Use GatewayToRouterEvent.ProtoReflect.Descriptor instead.
+func (*GatewayToRouterEvent) Descriptor() ([]byte, []int) {
 	return file_router_router_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *HotspotToRouterEvent) GetGatewayInformation() *GatewayInformation {
+func (x *GatewayToRouterEvent) GetGatewayInformation() *GatewayInformation {
 	if x != nil {
 		return x.GatewayInformation
 	}
 	return nil
 }
 
-func (m *HotspotToRouterEvent) GetEvent() isHotspotToRouterEvent_Event {
+func (m *GatewayToRouterEvent) GetEvent() isGatewayToRouterEvent_Event {
 	if m != nil {
 		return m.Event
 	}
 	return nil
 }
 
-func (x *HotspotToRouterEvent) GetUplinkFrameEvent() *UplinkFrameEvent {
-	if x, ok := x.GetEvent().(*HotspotToRouterEvent_UplinkFrameEvent); ok {
+func (x *GatewayToRouterEvent) GetUplinkFrameEvent() *UplinkFrameEvent {
+	if x, ok := x.GetEvent().(*GatewayToRouterEvent_UplinkFrameEvent); ok {
 		return x.UplinkFrameEvent
 	}
 	return nil
 }
 
-func (x *HotspotToRouterEvent) GetDownlinkTXAckEvent() *DownlinkTXAckEvent {
-	if x, ok := x.GetEvent().(*HotspotToRouterEvent_DownlinkTXAckEvent); ok {
+func (x *GatewayToRouterEvent) GetDownlinkTXAckEvent() *DownlinkTXAckEvent {
+	if x, ok := x.GetEvent().(*GatewayToRouterEvent_DownlinkTXAckEvent); ok {
 		return x.DownlinkTXAckEvent
 	}
 	return nil
 }
 
-func (x *HotspotToRouterEvent) GetStatusEvent() *StatusEvent {
-	if x, ok := x.GetEvent().(*HotspotToRouterEvent_StatusEvent); ok {
+func (x *GatewayToRouterEvent) GetStatusEvent() *StatusEvent {
+	if x, ok := x.GetEvent().(*GatewayToRouterEvent_StatusEvent); ok {
 		return x.StatusEvent
 	}
 	return nil
 }
 
-type isHotspotToRouterEvent_Event interface {
-	isHotspotToRouterEvent_Event()
+type isGatewayToRouterEvent_Event interface {
+	isGatewayToRouterEvent_Event()
 }
 
-type HotspotToRouterEvent_UplinkFrameEvent struct {
+type GatewayToRouterEvent_UplinkFrameEvent struct {
 	UplinkFrameEvent *UplinkFrameEvent `protobuf:"bytes,2,opt,name=uplinkFrameEvent,proto3,oneof"`
 }
 
-type HotspotToRouterEvent_DownlinkTXAckEvent struct {
+type GatewayToRouterEvent_DownlinkTXAckEvent struct {
 	DownlinkTXAckEvent *DownlinkTXAckEvent `protobuf:"bytes,3,opt,name=downlinkTXAckEvent,proto3,oneof"`
 }
 
-type HotspotToRouterEvent_StatusEvent struct {
+type GatewayToRouterEvent_StatusEvent struct {
 	StatusEvent *StatusEvent `protobuf:"bytes,4,opt,name=statusEvent,proto3,oneof"`
 }
 
-func (*HotspotToRouterEvent_UplinkFrameEvent) isHotspotToRouterEvent_Event() {}
+func (*GatewayToRouterEvent_UplinkFrameEvent) isGatewayToRouterEvent_Event() {}
 
-func (*HotspotToRouterEvent_DownlinkTXAckEvent) isHotspotToRouterEvent_Event() {}
+func (*GatewayToRouterEvent_DownlinkTXAckEvent) isGatewayToRouterEvent_Event() {}
 
-func (*HotspotToRouterEvent_StatusEvent) isHotspotToRouterEvent_Event() {}
+func (*GatewayToRouterEvent_StatusEvent) isGatewayToRouterEvent_Event() {}
 
 type DownlinkFrameEvent struct {
 	state         protoimpl.MessageState
@@ -784,20 +784,20 @@ func (*AirtimePaymentEvent) Descriptor() ([]byte, []int) {
 	return file_router_router_proto_rawDescGZIP(), []int{13}
 }
 
-type RouterToHotspotEvent struct {
+type RouterToGatewayEvent struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to Event:
 	//
-	//	*RouterToHotspotEvent_DownlinkFrameEvent
-	//	*RouterToHotspotEvent_AirtimePaymentEvent
-	Event isRouterToHotspotEvent_Event `protobuf_oneof:"event"`
+	//	*RouterToGatewayEvent_DownlinkFrameEvent
+	//	*RouterToGatewayEvent_AirtimePaymentEvent
+	Event isRouterToGatewayEvent_Event `protobuf_oneof:"event"`
 }
 
-func (x *RouterToHotspotEvent) Reset() {
-	*x = RouterToHotspotEvent{}
+func (x *RouterToGatewayEvent) Reset() {
+	*x = RouterToGatewayEvent{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_router_router_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -805,13 +805,13 @@ func (x *RouterToHotspotEvent) Reset() {
 	}
 }
 
-func (x *RouterToHotspotEvent) String() string {
+func (x *RouterToGatewayEvent) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RouterToHotspotEvent) ProtoMessage() {}
+func (*RouterToGatewayEvent) ProtoMessage() {}
 
-func (x *RouterToHotspotEvent) ProtoReflect() protoreflect.Message {
+func (x *RouterToGatewayEvent) ProtoReflect() protoreflect.Message {
 	mi := &file_router_router_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -823,47 +823,47 @@ func (x *RouterToHotspotEvent) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RouterToHotspotEvent.ProtoReflect.Descriptor instead.
-func (*RouterToHotspotEvent) Descriptor() ([]byte, []int) {
+// Deprecated: Use RouterToGatewayEvent.ProtoReflect.Descriptor instead.
+func (*RouterToGatewayEvent) Descriptor() ([]byte, []int) {
 	return file_router_router_proto_rawDescGZIP(), []int{14}
 }
 
-func (m *RouterToHotspotEvent) GetEvent() isRouterToHotspotEvent_Event {
+func (m *RouterToGatewayEvent) GetEvent() isRouterToGatewayEvent_Event {
 	if m != nil {
 		return m.Event
 	}
 	return nil
 }
 
-func (x *RouterToHotspotEvent) GetDownlinkFrameEvent() *DownlinkFrameEvent {
-	if x, ok := x.GetEvent().(*RouterToHotspotEvent_DownlinkFrameEvent); ok {
+func (x *RouterToGatewayEvent) GetDownlinkFrameEvent() *DownlinkFrameEvent {
+	if x, ok := x.GetEvent().(*RouterToGatewayEvent_DownlinkFrameEvent); ok {
 		return x.DownlinkFrameEvent
 	}
 	return nil
 }
 
-func (x *RouterToHotspotEvent) GetAirtimePaymentEvent() *AirtimePaymentEvent {
-	if x, ok := x.GetEvent().(*RouterToHotspotEvent_AirtimePaymentEvent); ok {
+func (x *RouterToGatewayEvent) GetAirtimePaymentEvent() *AirtimePaymentEvent {
+	if x, ok := x.GetEvent().(*RouterToGatewayEvent_AirtimePaymentEvent); ok {
 		return x.AirtimePaymentEvent
 	}
 	return nil
 }
 
-type isRouterToHotspotEvent_Event interface {
-	isRouterToHotspotEvent_Event()
+type isRouterToGatewayEvent_Event interface {
+	isRouterToGatewayEvent_Event()
 }
 
-type RouterToHotspotEvent_DownlinkFrameEvent struct {
+type RouterToGatewayEvent_DownlinkFrameEvent struct {
 	DownlinkFrameEvent *DownlinkFrameEvent `protobuf:"bytes,1,opt,name=downlinkFrameEvent,proto3,oneof"`
 }
 
-type RouterToHotspotEvent_AirtimePaymentEvent struct {
+type RouterToGatewayEvent_AirtimePaymentEvent struct {
 	AirtimePaymentEvent *AirtimePaymentEvent `protobuf:"bytes,2,opt,name=airtimePaymentEvent,proto3,oneof"`
 }
 
-func (*RouterToHotspotEvent_DownlinkFrameEvent) isRouterToHotspotEvent_Event() {}
+func (*RouterToGatewayEvent_DownlinkFrameEvent) isRouterToGatewayEvent_Event() {}
 
-func (*RouterToHotspotEvent_AirtimePaymentEvent) isRouterToHotspotEvent_Event() {}
+func (*RouterToGatewayEvent_AirtimePaymentEvent) isRouterToGatewayEvent_Event() {}
 
 var File_router_router_proto protoreflect.FileDescriptor
 
@@ -920,8 +920,8 @@ var file_router_router_proto_rawDesc = []byte{
 	0x52, 0x0e, 0x61, 0x69, 0x72, 0x74, 0x69, 0x6d, 0x65, 0x52, 0x65, 0x63, 0x65, 0x69, 0x70, 0x74,
 	0x22, 0x25, 0x0a, 0x0b, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x12,
 	0x16, 0x0a, 0x06, 0x6f, 0x6e, 0x6c, 0x69, 0x6e, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52,
-	0x06, 0x6f, 0x6e, 0x6c, 0x69, 0x6e, 0x65, 0x22, 0xba, 0x02, 0x0a, 0x14, 0x48, 0x6f, 0x74, 0x73,
-	0x70, 0x6f, 0x74, 0x54, 0x6f, 0x52, 0x6f, 0x75, 0x74, 0x65, 0x72, 0x45, 0x76, 0x65, 0x6e, 0x74,
+	0x06, 0x6f, 0x6e, 0x6c, 0x69, 0x6e, 0x65, 0x22, 0xba, 0x02, 0x0a, 0x14, 0x47, 0x61, 0x74, 0x65,
+	0x77, 0x61, 0x79, 0x54, 0x6f, 0x52, 0x6f, 0x75, 0x74, 0x65, 0x72, 0x45, 0x76, 0x65, 0x6e, 0x74,
 	0x12, 0x4a, 0x0a, 0x12, 0x67, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x49, 0x6e, 0x66, 0x6f, 0x72,
 	0x6d, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x72,
 	0x6f, 0x75, 0x74, 0x65, 0x72, 0x2e, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x49, 0x6e, 0x66,
@@ -947,7 +947,7 @@ var file_router_router_proto_rawDesc = []byte{
 	0x72, 0x61, 0x6d, 0x65, 0x52, 0x0d, 0x64, 0x6f, 0x77, 0x6e, 0x6c, 0x69, 0x6e, 0x6b, 0x46, 0x72,
 	0x61, 0x6d, 0x65, 0x22, 0x15, 0x0a, 0x13, 0x41, 0x69, 0x72, 0x74, 0x69, 0x6d, 0x65, 0x50, 0x61,
 	0x79, 0x6d, 0x65, 0x6e, 0x74, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x22, 0xbe, 0x01, 0x0a, 0x14, 0x52,
-	0x6f, 0x75, 0x74, 0x65, 0x72, 0x54, 0x6f, 0x48, 0x6f, 0x74, 0x73, 0x70, 0x6f, 0x74, 0x45, 0x76,
+	0x6f, 0x75, 0x74, 0x65, 0x72, 0x54, 0x6f, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x45, 0x76,
 	0x65, 0x6e, 0x74, 0x12, 0x4c, 0x0a, 0x12, 0x64, 0x6f, 0x77, 0x6e, 0x6c, 0x69, 0x6e, 0x6b, 0x46,
 	0x72, 0x61, 0x6d, 0x65, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32,
 	0x1a, 0x2e, 0x72, 0x6f, 0x75, 0x74, 0x65, 0x72, 0x2e, 0x44, 0x6f, 0x77, 0x6e, 0x6c, 0x69, 0x6e,
@@ -968,10 +968,10 @@ var file_router_router_proto_rawDesc = []byte{
 	0x74, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1a, 0x2e, 0x72, 0x6f, 0x75,
 	0x74, 0x65, 0x72, 0x2e, 0x4a, 0x6f, 0x69, 0x6e, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x52, 0x65,
 	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x48, 0x0a, 0x06, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x73,
-	0x12, 0x1c, 0x2e, 0x72, 0x6f, 0x75, 0x74, 0x65, 0x72, 0x2e, 0x48, 0x6f, 0x74, 0x73, 0x70, 0x6f,
-	0x74, 0x54, 0x6f, 0x52, 0x6f, 0x75, 0x74, 0x65, 0x72, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x1a, 0x1c,
+	0x12, 0x1c, 0x2e, 0x72, 0x6f, 0x75, 0x74, 0x65, 0x72, 0x2e, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61,
+	0x79, 0x54, 0x6f, 0x52, 0x6f, 0x75, 0x74, 0x65, 0x72, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x1a, 0x1c,
 	0x2e, 0x72, 0x6f, 0x75, 0x74, 0x65, 0x72, 0x2e, 0x52, 0x6f, 0x75, 0x74, 0x65, 0x72, 0x54, 0x6f,
-	0x48, 0x6f, 0x74, 0x73, 0x70, 0x6f, 0x74, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x28, 0x01, 0x30, 0x01,
+	0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x28, 0x01, 0x30, 0x01,
 	0x42, 0x34, 0x5a, 0x32, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x54,
 	0x68, 0x69, 0x6e, 0x67, 0x73, 0x49, 0x58, 0x46, 0x6f, 0x75, 0x6e, 0x64, 0x61, 0x74, 0x69, 0x6f,
 	0x6e, 0x2f, 0x72, 0x6f, 0x75, 0x74, 0x65, 0x72, 0x2d, 0x61, 0x70, 0x69, 0x2f, 0x67, 0x6f, 0x2f,
@@ -1003,10 +1003,10 @@ var file_router_router_proto_goTypes = []interface{}{
 	(*UplinkFrameEvent)(nil),     // 8: router.UplinkFrameEvent
 	(*DownlinkTXAckEvent)(nil),   // 9: router.DownlinkTXAckEvent
 	(*StatusEvent)(nil),          // 10: router.StatusEvent
-	(*HotspotToRouterEvent)(nil), // 11: router.HotspotToRouterEvent
+	(*GatewayToRouterEvent)(nil), // 11: router.GatewayToRouterEvent
 	(*DownlinkFrameEvent)(nil),   // 12: router.DownlinkFrameEvent
 	(*AirtimePaymentEvent)(nil),  // 13: router.AirtimePaymentEvent
-	(*RouterToHotspotEvent)(nil), // 14: router.RouterToHotspotEvent
+	(*RouterToGatewayEvent)(nil), // 14: router.RouterToGatewayEvent
 	(*gw.UplinkFrame)(nil),       // 15: gw.UplinkFrame
 	(*gw.DownlinkTXAck)(nil),     // 16: gw.DownlinkTXAck
 	(*gw.DownlinkFrame)(nil),     // 17: gw.DownlinkFrame
@@ -1018,19 +1018,19 @@ var file_router_router_proto_depIdxs = []int32{
 	7,  // 3: router.UplinkFrameEvent.airtimeReceipt:type_name -> router.AirtimeReceipt
 	16, // 4: router.DownlinkTXAckEvent.downlinkTXAck:type_name -> gw.DownlinkTXAck
 	7,  // 5: router.DownlinkTXAckEvent.airtimeReceipt:type_name -> router.AirtimeReceipt
-	6,  // 6: router.HotspotToRouterEvent.gatewayInformation:type_name -> router.GatewayInformation
-	8,  // 7: router.HotspotToRouterEvent.uplinkFrameEvent:type_name -> router.UplinkFrameEvent
-	9,  // 8: router.HotspotToRouterEvent.downlinkTXAckEvent:type_name -> router.DownlinkTXAckEvent
-	10, // 9: router.HotspotToRouterEvent.statusEvent:type_name -> router.StatusEvent
+	6,  // 6: router.GatewayToRouterEvent.gatewayInformation:type_name -> router.GatewayInformation
+	8,  // 7: router.GatewayToRouterEvent.uplinkFrameEvent:type_name -> router.UplinkFrameEvent
+	9,  // 8: router.GatewayToRouterEvent.downlinkTXAckEvent:type_name -> router.DownlinkTXAckEvent
+	10, // 9: router.GatewayToRouterEvent.statusEvent:type_name -> router.StatusEvent
 	17, // 10: router.DownlinkFrameEvent.downlinkFrame:type_name -> gw.DownlinkFrame
-	12, // 11: router.RouterToHotspotEvent.downlinkFrameEvent:type_name -> router.DownlinkFrameEvent
-	13, // 12: router.RouterToHotspotEvent.airtimePaymentEvent:type_name -> router.AirtimePaymentEvent
+	12, // 11: router.RouterToGatewayEvent.downlinkFrameEvent:type_name -> router.DownlinkFrameEvent
+	13, // 12: router.RouterToGatewayEvent.airtimePaymentEvent:type_name -> router.AirtimePaymentEvent
 	2,  // 13: router.RouterV1.NetIds:input_type -> router.NetIdsRequest
 	4,  // 14: router.RouterV1.JoinFilter:input_type -> router.JoinFilterRequest
-	11, // 15: router.RouterV1.Events:input_type -> router.HotspotToRouterEvent
+	11, // 15: router.RouterV1.Events:input_type -> router.GatewayToRouterEvent
 	3,  // 16: router.RouterV1.NetIds:output_type -> router.NetIdsResponse
 	5,  // 17: router.RouterV1.JoinFilter:output_type -> router.JoinFilterResponse
-	14, // 18: router.RouterV1.Events:output_type -> router.RouterToHotspotEvent
+	14, // 18: router.RouterV1.Events:output_type -> router.RouterToGatewayEvent
 	16, // [16:19] is the sub-list for method output_type
 	13, // [13:16] is the sub-list for method input_type
 	13, // [13:13] is the sub-list for extension type_name
@@ -1177,7 +1177,7 @@ func file_router_router_proto_init() {
 			}
 		}
 		file_router_router_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HotspotToRouterEvent); i {
+			switch v := v.(*GatewayToRouterEvent); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1213,7 +1213,7 @@ func file_router_router_proto_init() {
 			}
 		}
 		file_router_router_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RouterToHotspotEvent); i {
+			switch v := v.(*RouterToGatewayEvent); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1229,13 +1229,13 @@ func file_router_router_proto_init() {
 		(*JoinFilter_Xor8)(nil),
 	}
 	file_router_router_proto_msgTypes[11].OneofWrappers = []interface{}{
-		(*HotspotToRouterEvent_UplinkFrameEvent)(nil),
-		(*HotspotToRouterEvent_DownlinkTXAckEvent)(nil),
-		(*HotspotToRouterEvent_StatusEvent)(nil),
+		(*GatewayToRouterEvent_UplinkFrameEvent)(nil),
+		(*GatewayToRouterEvent_DownlinkTXAckEvent)(nil),
+		(*GatewayToRouterEvent_StatusEvent)(nil),
 	}
 	file_router_router_proto_msgTypes[14].OneofWrappers = []interface{}{
-		(*RouterToHotspotEvent_DownlinkFrameEvent)(nil),
-		(*RouterToHotspotEvent_AirtimePaymentEvent)(nil),
+		(*RouterToGatewayEvent_DownlinkFrameEvent)(nil),
+		(*RouterToGatewayEvent_AirtimePaymentEvent)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

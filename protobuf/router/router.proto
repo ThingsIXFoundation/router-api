@@ -59,7 +59,7 @@ message StatusEvent {
     bool online = 1;
 }
 
-message HotspotToRouterEvent {
+message GatewayToRouterEvent {
     GatewayInformation gatewayInformation = 1;
     oneof event {
         UplinkFrameEvent uplinkFrameEvent = 2;
@@ -76,7 +76,7 @@ message AirtimePaymentEvent {
 
 }
 
-message RouterToHotspotEvent {
+message RouterToGatewayEvent {
     oneof event {
         DownlinkFrameEvent downlinkFrameEvent = 1;
         AirtimePaymentEvent airtimePaymentEvent = 2;
@@ -86,5 +86,5 @@ message RouterToHotspotEvent {
 service RouterV1 {
     rpc NetIds(NetIdsRequest) returns (NetIdsResponse);
     rpc JoinFilter(JoinFilterRequest) returns (JoinFilterResponse);
-    rpc Events(stream HotspotToRouterEvent) returns (stream RouterToHotspotEvent);
+    rpc Events(stream GatewayToRouterEvent) returns (stream RouterToGatewayEvent);
 }
