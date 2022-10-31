@@ -1,4 +1,4 @@
-module github.com/ThingsIXFoundation/router-api/go
+module github.com/ThingsIXFoundation/router-api
 
 go 1.18
 
