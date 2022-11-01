@@ -34,14 +34,6 @@ message JoinFilter {
     }
 }
 
-message NetIdsRequest {
-
-}
-
-message NetIdsResponse {
-    repeated bytes netId = 1;
-}
-
 message JoinFilterRequest {
 
 }
@@ -99,7 +91,6 @@ message RouterToGatewayEvent {
 }
 
 service RouterV1 {
-    rpc NetIds(NetIdsRequest) returns (NetIdsResponse);
     rpc JoinFilter(JoinFilterRequest) returns (JoinFilterResponse);
     rpc Events(stream GatewayToRouterEvent) returns (stream RouterToGatewayEvent);
 }

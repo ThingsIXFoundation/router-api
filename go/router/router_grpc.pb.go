@@ -22,7 +22,6 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RouterV1Client interface {
-	NetIds(ctx context.Context, in *NetIdsRequest, opts ...grpc.CallOption) (*NetIdsResponse, error)
 	JoinFilter(ctx context.Context, in *JoinFilterRequest, opts ...grpc.CallOption) (*JoinFilterResponse, error)
 	Events(ctx context.Context, opts ...grpc.CallOption) (RouterV1_EventsClient, error)
 }
@@ -33,15 +32,6 @@ type routerV1Client struct {
 
 func NewRouterV1Client(cc grpc.ClientConnInterface) RouterV1Client {
 	return &routerV1Client{cc}
-}
-
-func (c *routerV1Client) NetIds(ctx context.Context, in *NetIdsRequest, opts ...grpc.CallOption) (*NetIdsResponse, error) {
-	out := new(NetIdsResponse)
-	err := c.cc.Invoke(ctx, "/router.RouterV1/NetIds", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *routerV1Client) JoinFilter(ctx context.Context, in *JoinFilterRequest, opts ...grpc.CallOption) (*JoinFilterResponse, error) {
@@ -88,7 +78,6 @@ func (x *routerV1EventsClient) Recv() (*RouterToGatewayEvent, error) {
 // All implementations must embed UnimplementedRouterV1Server
 // for forward compatibility
 type RouterV1Server interface {
-	NetIds(context.Context, *NetIdsRequest) (*NetIdsResponse, error)
 	JoinFilter(context.Context, *JoinFilterRequest) (*JoinFilterResponse, error)
 	Events(RouterV1_EventsServer) error
 	mustEmbedUnimplementedRouterV1Server()
@@ -98,9 +87,6 @@ type RouterV1Server interface {
 type UnimplementedRouterV1Server struct {
 }
 
-func (UnimplementedRouterV1Server) NetIds(context.Context, *NetIdsRequest) (*NetIdsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method NetIds not implemented")
-}
 func (UnimplementedRouterV1Server) JoinFilter(context.Context, *JoinFilterRequest) (*JoinFilterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method JoinFilter not implemented")
 }
@@ -118,24 +104,6 @@ type UnsafeRouterV1Server interface {
 
 func RegisterRouterV1Server(s grpc.ServiceRegistrar, srv RouterV1Server) {
 	s.RegisterService(&RouterV1_ServiceDesc, srv)
-}
-
-func _RouterV1_NetIds_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(NetIdsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RouterV1Server).NetIds(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/router.RouterV1/NetIds",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RouterV1Server).NetIds(ctx, req.(*NetIdsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _RouterV1_JoinFilter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -189,10 +157,6 @@ var RouterV1_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "router.RouterV1",
 	HandlerType: (*RouterV1Server)(nil),
 	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "NetIds",
-			Handler:    _RouterV1_NetIds_Handler,
-		},
 		{
 			MethodName: "JoinFilter",
 			Handler:    _RouterV1_JoinFilter_Handler,
