@@ -18,7 +18,7 @@
 
 # Adds a license to all code files, requires the https://github.com/google/addlicense tool to be installed
 # Example for Go: addlicense -check -c "Stichting ThingsIX Foundation" -s -ignore "external/**" . | xargs -I %s -- echo "::error file=%s,line=1::Missing license header"
-errors=$(addlicense -check -c "Stichting ThingsIX Foundation" -s -ignore "chirpstack-api/**" .)
+errors=$(addlicense -check -c "Stichting ThingsIX Foundation" -s -ignore "chirpstack/**" .)
 ret=$?
 echo $errors | xargs -I %s -- echo "::error file=%s,line=1::Missing license header"
 exit $ret

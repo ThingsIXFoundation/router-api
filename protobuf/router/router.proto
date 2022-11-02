@@ -58,7 +58,7 @@ message UplinkFrameEvent {
 }
 
 message DownlinkTXAckEvent {
-    gw.DownlinkTXAck downlinkTXAck = 1;
+    gw.DownlinkTxAck downlinkTXAck = 1;
     AirtimeReceipt airtimeReceipt = 2;
 }
 

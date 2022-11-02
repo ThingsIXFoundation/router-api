@@ -23,7 +23,7 @@
 package router
 
 import (
-	gw "github.com/brocaar/chirpstack-api/go/v3/gw"
+	gw "github.com/chirpstack/chirpstack/api/go/v4/gw"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -422,7 +422,7 @@ type DownlinkTXAckEvent struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	DownlinkTXAck  *gw.DownlinkTXAck `protobuf:"bytes,1,opt,name=downlinkTXAck,proto3" json:"downlinkTXAck,omitempty"`
+	DownlinkTXAck  *gw.DownlinkTxAck `protobuf:"bytes,1,opt,name=downlinkTXAck,proto3" json:"downlinkTXAck,omitempty"`
 	AirtimeReceipt *AirtimeReceipt   `protobuf:"bytes,2,opt,name=airtimeReceipt,proto3" json:"airtimeReceipt,omitempty"`
 }
 
@@ -458,7 +458,7 @@ func (*DownlinkTXAckEvent) Descriptor() ([]byte, []int) {
 	return file_router_router_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *DownlinkTXAckEvent) GetDownlinkTXAck() *gw.DownlinkTXAck {
+func (x *DownlinkTXAckEvent) GetDownlinkTXAck() *gw.DownlinkTxAck {
 	if x != nil {
 		return x.DownlinkTXAck
 	}
@@ -831,7 +831,7 @@ var file_router_router_proto_rawDesc = []byte{
 	0x6c, 0x69, 0x6e, 0x6b, 0x54, 0x58, 0x41, 0x63, 0x6b, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x12, 0x37,
 	0x0a, 0x0d, 0x64, 0x6f, 0x77, 0x6e, 0x6c, 0x69, 0x6e, 0x6b, 0x54, 0x58, 0x41, 0x63, 0x6b, 0x18,
 	0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x67, 0x77, 0x2e, 0x44, 0x6f, 0x77, 0x6e, 0x6c,
-	0x69, 0x6e, 0x6b, 0x54, 0x58, 0x41, 0x63, 0x6b, 0x52, 0x0d, 0x64, 0x6f, 0x77, 0x6e, 0x6c, 0x69,
+	0x69, 0x6e, 0x6b, 0x54, 0x78, 0x41, 0x63, 0x6b, 0x52, 0x0d, 0x64, 0x6f, 0x77, 0x6e, 0x6c, 0x69,
 	0x6e, 0x6b, 0x54, 0x58, 0x41, 0x63, 0x6b, 0x12, 0x3e, 0x0a, 0x0e, 0x61, 0x69, 0x72, 0x74, 0x69,
 	0x6d, 0x65, 0x52, 0x65, 0x63, 0x65, 0x69, 0x70, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32,
 	0x16, 0x2e, 0x72, 0x6f, 0x75, 0x74, 0x65, 0x72, 0x2e, 0x41, 0x69, 0x72, 0x74, 0x69, 0x6d, 0x65,
@@ -921,7 +921,7 @@ var file_router_router_proto_goTypes = []interface{}{
 	(*AirtimePaymentEvent)(nil),  // 11: router.AirtimePaymentEvent
 	(*RouterToGatewayEvent)(nil), // 12: router.RouterToGatewayEvent
 	(*gw.UplinkFrame)(nil),       // 13: gw.UplinkFrame
-	(*gw.DownlinkTXAck)(nil),     // 14: gw.DownlinkTXAck
+	(*gw.DownlinkTxAck)(nil),     // 14: gw.DownlinkTxAck
 	(*gw.DownlinkFrame)(nil),     // 15: gw.DownlinkFrame
 }
 var file_router_router_proto_depIdxs = []int32{
@@ -929,7 +929,7 @@ var file_router_router_proto_depIdxs = []int32{
 	1,  // 1: router.JoinFilterResponse.joinFilter:type_name -> router.JoinFilter
 	13, // 2: router.UplinkFrameEvent.uplinkFrame:type_name -> gw.UplinkFrame
 	5,  // 3: router.UplinkFrameEvent.airtimeReceipt:type_name -> router.AirtimeReceipt
-	14, // 4: router.DownlinkTXAckEvent.downlinkTXAck:type_name -> gw.DownlinkTXAck
+	14, // 4: router.DownlinkTXAckEvent.downlinkTXAck:type_name -> gw.DownlinkTxAck
 	5,  // 5: router.DownlinkTXAckEvent.airtimeReceipt:type_name -> router.AirtimeReceipt
 	4,  // 6: router.GatewayToRouterEvent.gatewayInformation:type_name -> router.GatewayInformation
 	6,  // 7: router.GatewayToRouterEvent.uplinkFrameEvent:type_name -> router.UplinkFrameEvent

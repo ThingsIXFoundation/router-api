@@ -18,4 +18,4 @@
 
 # Adds a license to all code files, requires the https://github.com/google/addlicense tool to be installed, add ignores for code that doesn't need a license.
 # Example for Go: addlicense -c "Stichting ThingsIX Foundation" -s -ignore "external/**" .
-addlicense -c "Stichting ThingsIX Foundation" -s -ignore "chirpstack-api/**" .
+addlicense -c "Stichting ThingsIX Foundation" -s -ignore "chirpstack/**" .
