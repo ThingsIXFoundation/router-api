@@ -32,6 +32,7 @@ message JoinFilter {
     oneof filter {
         Xor8Filter xor8 = 1;
     }
+    bytes roaringBitmap = 2;
 }
 
 message JoinFilterRequest {
